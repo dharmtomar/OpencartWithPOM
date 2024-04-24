@@ -2,7 +2,7 @@ package com.qa.opencart.utils;
 
 public class Constants {
 
-	public static final String login_Page_Title_Fraction="Account Login";
+	public static final String login_Page_Title_Fraction="Account Login12";
 	public static final String login_Page_URL_Fraction="route=account/login";
 	public static final String acc_Page_Title_Fraction="My Account";
 	public static final String acc_Page_URL_Fraction="route=account/account";
