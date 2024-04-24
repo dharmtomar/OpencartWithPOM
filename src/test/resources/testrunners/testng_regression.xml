@@ -10,19 +10,19 @@
 		<listener class-name="com.qa.opencart.listeners.AnnotationTransformer"></listener>
 	</listeners>
 
-	<test name="Opencart Login Test with chrome" parallel="methods">
+	<test name="Opencart Login Test with chrome">
 		<parameter name="browser" value="chrome"></parameter>
 		<classes>
 			<class name="com.qa.opencart.tests.LoginPageTest" />
 		</classes>
 	</test>
-	<!--<test name="Opencart Login Test with firefox" parallel="methods">
+	<!--<test name="Opencart Login Test with firefox">
 		<parameter name="browser" value="firefox"></parameter>
 		<classes>
 			<class name="com.qa.opencart.tests.LoginPageTest" />
 		</classes>
 	</test>
-	<test name="Opencart Login Test with edge" parallel="methods">
+	<test name="Opencart Login Test with edge">
 		<parameter name="browser" value="edge"></parameter>
 		<classes>
 			<class name="com.qa.opencart.tests.LoginPageTest" />
