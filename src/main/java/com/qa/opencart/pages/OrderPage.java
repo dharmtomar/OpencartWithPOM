@@ -14,4 +14,7 @@ WebDriver driver;
   public void Order(){
   System.out.println("this is order testing");
   }
+	public void Logout(){
+  System.out.println("this is master logout testing");
+  }
 }
