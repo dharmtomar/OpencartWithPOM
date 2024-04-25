@@ -22,13 +22,13 @@
 			<class name="com.qa.opencart.tests.LoginPageTest" />
 		</classes>
 	</test>
-	<!--<test name="Opencart Login Test with edge">
+	<test name="Opencart Login Test with edge">
 		<parameter name="browser" value="edge"></parameter>
 		<classes>
 			<class name="com.qa.opencart.tests.LoginPageTest" />
 		</classes>
 	</test>
-
+<!--
 	<test name="Opencart Accountpage  Test">
 		<parameter name="browser" value="chrome"></parameter>
 		<classes>
