@@ -33,7 +33,7 @@ public class DriverFactory {
 	@Step("Initialyzing Driver with ThreadLocal.........")
 	public WebDriver initDriver(Properties prop) {
 		String browserName = prop.getProperty("browser");
-		// System.out.pri	ntln("Launching the browser- " + browserName);
+		// System.out.pri	ntln("Launching the browser-" + browserName);
 		Log.info("Launching the browser-  " + browserName);
 		highlight = prop.getProperty("highlight");
 
