@@ -53,7 +53,7 @@ public class DriverFactory {
 			break;
 		
 		default:
-			// System.out.println("Browsername is incorrect, please pass corect one-- " +
+			// System.out.println("Browsername is incorrect, please pass corect one -- " +
 			// browserName);
 			Log.error("Browsername is incorrect, please pass corect one-- " + browserName);
 			throw new BrowserExceptions("No BROWSER FOUND"+browserName);
