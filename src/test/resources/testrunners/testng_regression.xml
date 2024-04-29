@@ -16,7 +16,8 @@
 			<class name="com.qa.opencart.tests.LoginPageTest" />
 		</classes>
 	</test>
-	<test name="Opencart Login Test with firefox">
+	
+	<!--<test name="Opencart Login Test with firefox">
 		<parameter name="browser" value="firefox"></parameter>
 		<classes>
 			<class name="com.qa.opencart.tests.LoginPageTest" />
@@ -27,7 +28,8 @@
 		<classes>
 			<class name="com.qa.opencart.tests.LoginPageTest" />
 		</classes>
-	</test>
+	</test>-->
+
 <!--
 	<test name="Opencart Accountpage  Test">
 		<parameter name="browser" value="chrome"></parameter>
