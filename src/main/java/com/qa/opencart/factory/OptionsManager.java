@@ -2,9 +2,11 @@ package com.qa.opencart.factory;
 
 import java.util.Properties;
 
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
+
 
 public class OptionsManager {
 
@@ -19,6 +21,9 @@ public class OptionsManager {
 
 	public ChromeOptions chromeOptions() {
 		co = new ChromeOptions();
+		if (Boolean.parseBoolean(prop.getProperty("remote"))) {
+			co.setCapability("browserName", "chrome");
+		}
 		if (Boolean.parseBoolean(prop.getProperty("headless"))) {
 			System.out.println("running chrome in headless mode");
 			co.addArguments("--headless");
@@ -32,6 +37,9 @@ public class OptionsManager {
 
 	public FirefoxOptions firefoxOptions() {
 		fo = new FirefoxOptions();
+		if (Boolean.parseBoolean(prop.getProperty("remote"))) {
+			fo.setCapability("browserName", "firefox");
+		}
 		if (Boolean.parseBoolean(prop.getProperty("headless"))) {
 			System.out.println("running firefox in headless mode");
 			fo.addArguments("--headless");
@@ -45,6 +53,10 @@ public class OptionsManager {
 
 	public EdgeOptions edgeOptions() {
 		eo = new EdgeOptions();
+		if(Boolean.parseBoolean(prop.getProperty("remote"))) {
+			eo.setCapability("browserName", "msedge");
+			eo.setCapability("platform", Platform.LINUX);
+		}
 		if (Boolean.parseBoolean(prop.getProperty("headless"))) {
 			System.out.println("running edge in headless mode");
 			eo.addArguments("--headless");

@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URL;
 import java.util.Properties;
 
 import org.openqa.selenium.OutputType;
@@ -14,6 +15,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.io.FileHandler;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 import com.qa.opencart.errors.AppErrors;
@@ -33,36 +35,73 @@ public class DriverFactory {
 	@Step("Initialyzing Driver with ThreadLocal.........")
 	public WebDriver initDriver(Properties prop) {
 		String browserName = prop.getProperty("browser");
-		// System.out.pri	ntln("Launching the browser-" + browserName);
+		// System.out.pri ntln("Launching the browser-" + browserName);
 		Log.info("Launching the browser-  " + browserName);
 		highlight = prop.getProperty("highlight");
 
 		optionsManager = new OptionsManager(prop);
 		switch (browserName.trim().toLowerCase()) {
 		case "chrome":
-			// driver = new ChromeDriver(optionsManager.chromeOptions());
+			if (Boolean.parseBoolean(prop.getProperty("remote"))) {
+				init_remoteDriver("chrome");
+			}
+			else {
 			thLocal.set(new ChromeDriver(optionsManager.chromeOptions()));
+			}
 			break;
 		case "firefox":
-			// driver = new FirefoxDriver(optionsManager.firefoxOptions());
+			if (Boolean.parseBoolean(prop.getProperty("remote"))) {
+				init_remoteDriver("firefox");
+			}
+			else {
 			thLocal.set(new FirefoxDriver(optionsManager.firefoxOptions()));
+			}
 			break;
 		case "edge":
-			// driver = new EdgeDriver(optionsManager.edgeOptions());
+			if (Boolean.parseBoolean(prop.getProperty("remote"))) {
+				init_remoteDriver("msedge");
+			}
+			else {
 			thLocal.set(new EdgeDriver(optionsManager.edgeOptions()));
+			}
 			break;
-		
+
 		default:
 			// System.out.println("Browsername is incorrect, please pass corect one -- " +
 			// browserName);
 			Log.error("Browsername is incorrect, please pass corect one-- " + browserName);
-			throw new BrowserExceptions("No BROWSER FOUND"+browserName);
+			throw new BrowserExceptions("No BROWSER FOUND" + browserName);
 		}
 		getDriver().manage().deleteAllCookies();
 		getDriver().manage().window().maximize();
 		getDriver().get(prop.getProperty("url"));
 
 		return getDriver();
+	}
+
+	private void init_remoteDriver(String browserName) {
+		Log.info("Running tests on Remote Grid on browser : " + browserName);
+		try {
+			switch (browserName.toLowerCase().trim()) {
+			case "chrome":
+
+				thLocal.set(
+						new RemoteWebDriver(new URL(prop.getProperty("remoteurl")), optionsManager.chromeOptions()));
+				break;
+			case "firefox":
+				thLocal.set(
+						new RemoteWebDriver(new URL(prop.getProperty("remoteurl")), optionsManager.firefoxOptions()));
+				break;
+			case "msedge":
+				thLocal.set(new RemoteWebDriver(new URL(prop.getProperty("remoteurl")), optionsManager.edgeOptions()));
+				break;
+			default:
+				Log.info("plz pass thr right supported browser on GRID....");
+				break;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static WebDriver getDriver() {
@@ -102,17 +141,17 @@ public class DriverFactory {
 					throw new FrameworkException(AppErrors.ENV_NOT_FOUND);
 				}
 			}
-			
+
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
-		} 
+		}
 		try {
 			prop.load(fis);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return prop;
 	}
 
@@ -132,4 +171,5 @@ public class DriverFactory {
 
 		return path;
 	}
+
 }
