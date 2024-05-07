@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 
-<suite name="TestNG Regression Suite" verbose="3" thread-count="5"
+<suite name="TestNG Regression Suite" verbose="3" thread-count="10"
 	parallel="tests">
 
 	<listeners>
@@ -12,7 +12,7 @@
 
 	<test name="Opencart Login Test with firefox">
 		<parameter name="browser" value="firefox"></parameter>
-		<parameter name="browserversion" value="125.0"></parameter>
+		<parameter name="browserversion" value="124.0"></parameter>
 		<parameter name="testname" value="OpenCart-Login Page Test" />
 		<classes>
 			<class name="com.qa.opencart.tests.LoginPageTest" />
