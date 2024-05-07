@@ -5,7 +5,6 @@ import java.util.Properties;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.asserts.SoftAssert;
 
@@ -35,15 +34,17 @@ public class BaseTest {
 	protected OptionsManager ops;
 	
 	@Step("launching the browser : {0}")
-	@Parameters({"browser"})
+	@Parameters({"browser","browserversion","testname"})
 	@BeforeTest
-	public void setup(String browsername) {
+	public void setup(String browsername,String browserVersion,String testName) {
 		
 		df=new DriverFactory();
 		prop=df.initProp();
 		
 		if(browsername!=null) {
 		prop.setProperty("browser", browsername);
+		prop.setProperty("browserversion", browserVersion);
+		prop.setProperty("testname", testName);
 		}
 			
 		driver=df.initDriver(prop);

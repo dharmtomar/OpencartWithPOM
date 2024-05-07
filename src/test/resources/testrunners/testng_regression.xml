@@ -10,50 +10,57 @@
 		<listener class-name="com.qa.opencart.listeners.AnnotationTransformer"></listener>
 	</listeners>
 
-	<test name="Opencart Login Test with chrome">
+	<test name="Opencart Login Test with firefox">
 		<parameter name="browser" value="firefox"></parameter>
+		<parameter name="browserversion" value="125.0"></parameter>
+		<parameter name="testname" value="OpenCart-Login Page Test" />
 		<classes>
 			<class name="com.qa.opencart.tests.LoginPageTest" />
 		</classes>
 	</test>
-	<test name="Opencart ProductInfoPage Test">
+	<test name="Opencart ProductInfoPage Test with chrome">
 		<parameter name="browser" value="chrome"></parameter>
+		<parameter name="browserversion" value="113.0"></parameter>
+		<parameter name="testname" value="OpenCart-ProductInfoPage Test" />
 		<classes>
 			<class name="com.qa.opencart.tests.ProductInfoPageTest" />
 		</classes>
 	</test>
-	<!--<test name="Opencart Login Test with firefox">
-		<parameter name="browser" value="firefox"></parameter>
+
+	<test name="Opencart Login Test with chrome">
+		<parameter name="browser" value="chrome"></parameter>
+		<parameter name="browserversion" value="122.0"></parameter>
+		<parameter name="testname" value="OpenCart-LoginPageTest Test" />
 		<classes>
 			<class name="com.qa.opencart.tests.LoginPageTest" />
 		</classes>
 	</test>
-	<test name="Opencart Login Test with edge">
-		<parameter name="browser" value="edge"></parameter>
-		<classes>
-			<class name="com.qa.opencart.tests.LoginPageTest" />
-		</classes>
-	</test>-->
 
 
-	<!--<test name="Opencart Accountpage  Test">
+	<test name="Opencart Accountpage  Test with chrome">
 		<parameter name="browser" value="chrome"></parameter>
+		<parameter name="browserversion" value="123.0"></parameter>
+		<parameter name="testname" value="OpenCart-AccountPageTest Test" />
 		<classes>
 			<class name="com.qa.opencart.tests.AccountPageTest" />
 		</classes>
 	</test>
-	<test name="Opencart SearchResultPage Test">
-		<parameter name="browser" value="firefox"></parameter>
+	<test name="Opencart SearchResultPage Test with chrome">
+		<parameter name="browser" value="chrome"></parameter>
+		<parameter name="browserversion" value="124.0"></parameter>
+		<parameter name="testname" value="OpenCart-SearchResultPageTest Test" />
 		<classes>
 			<class name="com.qa.opencart.tests.SearchResultPageTest" />
 		</classes>
 	</test>
-	-->
-	<!--<test name="Opencart RegisterUserTest Test">
+	
+	<test name="Opencart RegisterUserTest Test with firefox">
 		<parameter name="browser" value="firefox"></parameter>
+		<parameter name="browserversion" value="100.0"></parameter>
+		<parameter name="testname" value="OpenCart-RegisterUserTest Test" />
 		<classes>
 			<class name="com.qa.opencart.tests.RegisterUserTest" />
 		</classes>
-	</test>-->
+	</test>
 
 </suite>

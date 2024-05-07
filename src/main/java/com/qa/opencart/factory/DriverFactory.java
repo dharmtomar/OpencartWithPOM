@@ -16,7 +16,6 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.safari.SafariDriver;
 
 import com.qa.opencart.errors.AppErrors;
 import com.qa.opencart.exceptions.BrowserExceptions;
@@ -59,7 +58,7 @@ public class DriverFactory {
 			break;
 		case "edge":
 			if (Boolean.parseBoolean(prop.getProperty("remote"))) {
-				init_remoteDriver("msedge");
+				init_remoteDriver("edge");
 			}
 			else {
 			thLocal.set(new EdgeDriver(optionsManager.edgeOptions()));
@@ -86,14 +85,14 @@ public class DriverFactory {
 			case "chrome":
 
 				thLocal.set(
-						new RemoteWebDriver(new URL(prop.getProperty("remoteurl")), optionsManager.chromeOptions()));
+						new RemoteWebDriver(new URL(prop.getProperty("huburl")), optionsManager.chromeOptions()));
 				break;
 			case "firefox":
 				thLocal.set(
-						new RemoteWebDriver(new URL(prop.getProperty("remoteurl")), optionsManager.firefoxOptions()));
+						new RemoteWebDriver(new URL(prop.getProperty("huburl")), optionsManager.firefoxOptions()));
 				break;
-			case "msedge":
-				thLocal.set(new RemoteWebDriver(new URL(prop.getProperty("remoteurl")), optionsManager.edgeOptions()));
+			case "edge":
+				thLocal.set(new RemoteWebDriver(new URL(prop.getProperty("huburl")), optionsManager.edgeOptions()));
 				break;
 			default:
 				Log.info("plz pass thr right supported browser on GRID....");

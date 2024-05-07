@@ -39,7 +39,7 @@ public class LoginPage {
 	public String getLoginPageURL() {
 		String URL = eleUtil.waitForURLContains(Constants.login_Page_URL_Fraction, 5);
 		//System.out.println(URL);
-		Log.info("Login page URL : "+URL);
+		//Log.info("Login page URL : "+URL);
 		return URL;
 	}
 
