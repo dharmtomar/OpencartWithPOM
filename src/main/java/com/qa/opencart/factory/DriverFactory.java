@@ -42,19 +42,23 @@ public class DriverFactory {
 		case "chrome":
 			if (Boolean.parseBoolean(prop.getProperty("remote"))) {
 				init_remoteDriver("chrome");
+				break;
 			}
 			else {
 			thLocal.set(new ChromeDriver(optionsManager.chromeOptions()));
-			}
 			break;
+			}
+			//break;
 		case "firefox":
 			if (Boolean.parseBoolean(prop.getProperty("remote"))) {
 				init_remoteDriver("firefox");
+				break;
 			}
 			else {
 			thLocal.set(new FirefoxDriver(optionsManager.firefoxOptions()));
-			}
 			break;
+			}
+			//break;
 		case "edge":
 			if (Boolean.parseBoolean(prop.getProperty("remote"))) {
 				init_remoteDriver("edge");
